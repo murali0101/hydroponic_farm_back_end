@@ -11,6 +11,7 @@ app.use(cors());
 const { SignUp, SignIn } = require("./controllers/auth.controller");
 
 const productController = require("./controllers/product.controller");
+const cartController = require("./controllers/card.controller");
 
 app.get("/", async (req, res) => {
   try {
@@ -25,5 +26,6 @@ app.post("/signup", SignUp);
 app.post("/signin", SignIn);
 
 app.use("/products", productController);
+app.use("/cart", cartController);
 
 module.exports = app;
