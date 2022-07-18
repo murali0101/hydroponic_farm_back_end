@@ -11,18 +11,12 @@ app.use(cors());
 const { SignUp, SignIn } = require("./controllers/auth.controller");
 
 const productController = require("./controllers/product.controller");
-const favouriteController = require("./controllers/favourite.controller");
-const cartController = require("./controllers/cart.controller");
-const amountController = require("./controllers/amount.controller");
-const couponController = require("./controllers/coupon.controller");
-const addressController = require("./controllers/address.controller");
-const orderController = require("./controllers/order.controller");
 
 app.get("/", async (req, res) => {
   try {
     res.status(200).send("Welcome Hydroponic Farm");
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).send(error.message);
   }
 });
 
@@ -31,17 +25,5 @@ app.post("/signup", SignUp);
 app.post("/signin", SignIn);
 
 app.use("/products", productController);
-
-app.use("/favourite", favouriteController);
-
-app.use("/cart", cartController);
-
-app.use("/amount", amountController);
-
-app.use("/coupon", couponController);
-
-app.use("/address", addressController);
-
-app.use("/orders", orderController);
 
 module.exports = app;

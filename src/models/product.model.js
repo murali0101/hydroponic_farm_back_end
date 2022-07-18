@@ -1,23 +1,17 @@
 const { Schema, model } = require("mongoose");
 
-const reqArray = { type: Array, required: true };
 const reqString = { type: String, required: true };
 const reqNumber = { type: Number, required: true };
 
-const productSchema = new Schema({
-    img: reqArray,
+const productSchema = new Schema(
+  {
     name: reqString,
-    description: reqString,
-    category: reqString,
+    image: reqString,
     price: reqNumber,
-    size: reqArray,
-    rating: reqNumber,
-    gender: reqString,
-    brand: reqString,
-    collections: reqString
-}, {
-    versionKey: false
-});
+  },
+  {
+    versionKey: false,
+  }
+);
 
 module.exports = model("product", productSchema);
-
