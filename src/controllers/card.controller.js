@@ -7,7 +7,7 @@ const Cart = require("../models/card.model");
 
 router.get("/", authorization, async (req, res) => {
   try {
-    const cart = await Cart.find({ userId: req.user._id }).lean().exec();
+    const cart = await Cart.find({ userId: req.user._id }).populate({path:"productId",select:{}}).lean().exec();
     return res.status(200).send(cart);
   } catch (error) {
     return res.status(500).send(error);
