@@ -24,13 +24,13 @@ router.post("/:id", authorization, async (req, res) => {
     });
 
     if (exist.length != 0) {
-      return res.status(400).send("Already Add To Cart");
+      return res.status(400).send("Product Already Add To Cart");
     }
     const cart = await Cart.create({
       userId: req.user._id,
       productId: req.params.id,
     });
-    return res.status(201).send("Product Add Successfully");
+    return res.status(201).send("Product is added to the Cart");
   } catch (error) {
     console.log("error:", error);
     return res.status(500).send(error);
